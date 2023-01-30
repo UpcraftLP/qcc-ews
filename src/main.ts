@@ -19,7 +19,7 @@ logger.info(`Ref: ${config.meta.commitSha}`);
 logger.info(`Environment: ${config.meta.development ? 'Development' : 'Production'}`);
 logger.info('Starting bot...');
 
-
+// one of the known bad user accounts, to compare the creation date to.
 const knownBadUserId = '963511021652303882';
 
 const client = new Client({

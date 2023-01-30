@@ -1,6 +1,5 @@
 import pino from 'pino';
 import config from './config';
-import 'pino-pretty';
 
 const streams: pino.StreamEntry[] = [
 	{ stream: pino.destination(1) },

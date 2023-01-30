@@ -21,7 +21,7 @@ $ docker pull ghcr.io/upcraftlp/qcc-ews:main
 2. Clone the repository
     ```sh
     $ git clone https://github.com/upcraftlp/qcc-ews.git
-    $ cd quilt-ews
+    $ cd qcc-ews
     ```
 3. Install dependencies
     ```sh

@@ -27,8 +27,8 @@ $ docker pull ghcr.io/upcraftlp/quilt-ews:main
     ```sh
     $ yarn
     ```
-4. On the Create a new Discord [application](https://discord.com/developers/applications "Discord developer dashboard") and bot user
-5. ❗enable the `SERVER MEMBERS INTENT` toggle in the bot's settings❗
+4. On the [Discord developer dashboard](https://discord.com/developers/applications "Discord Developer Portal") create a new application and enable the bot user for it<br>
+    ❗Make sure to enable the `SERVER MEMBERS INTENT` toggle in the settings❗
 6. To invite the bot to your server, you need to open the invite link in your browser:<br>
     *replace `YOUR_CLIENT_ID` with the application ID from the dashboard*
     ```

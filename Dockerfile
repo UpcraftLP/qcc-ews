@@ -1,5 +1,8 @@
 FROM node:18-alpine
 
+HEALTHCHECK --interval=30s --retries=3 --start-period=10s --timeout=5s \
+    CMD yarn healthcheck
+
 ENV NODE_ENV=production
 
 ARG VERSION

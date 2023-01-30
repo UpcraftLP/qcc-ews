@@ -3,6 +3,7 @@ import { Client } from 'discord.js';
 import timestamps from './util/timestamps';
 import config from './util/config';
 import logger, { eventLogger } from './util/logger';
+import healthcheck from './util/healthcheck';
 
 process.on('uncaughtException', (err) => {
 	logger.fatal(err);
@@ -53,8 +54,11 @@ const main = async () => {
 			}
 			throw error;
 		}
+		
+		if(config.healthCheck.enabled) {
+			await healthcheck.start();
+		}
 		logger.info(`[READY] connected to discord as ${client.user?.tag}`);
-
 	});
 	client.addListener(Events.GuildMemberAdd, async (member: GuildMember) => {
 		logger.debug(`[JOIN] ${member.id}`);

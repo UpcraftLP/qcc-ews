@@ -131,3 +131,5 @@ dist
 
 # Misc
 .tmp/
+.env.production
+.env.staging

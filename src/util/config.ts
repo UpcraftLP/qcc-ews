@@ -7,6 +7,7 @@ interface Config {
     clientId: string;
 	meta: Meta;
 	logging: Logging;
+	healthCheck: HealthCheck;
 }
 
 interface Meta {
@@ -22,6 +23,12 @@ interface Logging {
 	alertsUsers: string[];
 	level: string;
 	logEvents: boolean;
+}
+
+interface HealthCheck {
+	enabled: boolean;
+	port: number;
+	interface: string;
 }
 
 export const get = (key: string, defaultValue?: string): string => {
@@ -66,11 +73,18 @@ const logging: Logging = {
 	logEvents: getBool('LOG_EVENTS', true),
 };
 
+const healthCheck: HealthCheck = {
+	enabled: getBool('HEALTHCHECK_ENABLED', true),
+	port: getNumber('HEALTHCHECK_PORT', 8000),
+	interface: get('HEALTHCHECK_LISTEN_ON', '0.0.0.0'),
+};
+
 const config: Config = {
 	token: get('DISCORD_TOKEN'),
 	clientId: get('DISCORD_CLIENT_ID'),
 	meta,
-	logging
+	logging,
+	healthCheck,
 };
 
 export default config;

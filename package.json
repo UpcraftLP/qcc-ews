@@ -15,7 +15,8 @@
     "start": "ts-node src/main.ts",
     "dev": "nodemon --watch src --exec \"ts-node src/main.ts | pino-pretty --colorize --translateTime --levelFirst\"",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix"
+    "lint:fix": "eslint src --ext .ts --fix",
+    "healthcheck": "ts-node src/health.ts"
   },
   "dependencies": {
     "discord.js": "^14.7.1",

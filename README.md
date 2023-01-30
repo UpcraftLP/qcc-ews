@@ -12,7 +12,7 @@ A Discord Bot that acts as an Early Warning System for the Quilt Community Colla
 For convenience, this application is packaged as a Docker image.<br>
 The bot can be configured using [environment variables](.env.example)
 ```sh
-$ docker pull ghcr.io/upcraftlp/quilt-ews:main
+$ docker pull ghcr.io/upcraftlp/qcc-ews:main
 ```
 
 ## Contributing:

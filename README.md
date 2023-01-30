@@ -20,7 +20,11 @@ $ docker pull ghcr.io/upcraftlp/quilt-ews:main
 1. install [Yarn](https://classic.yarnpkg.com/en/docs/install)
 2. Clone the repository
 3. Install dependencies<br>
-    ```$ yarn```
+    ```
+    $ yarn
+    ```
 4. Set up the environment (see [the example file](.env.example))
 5. Run the bot in development mode<br>
-    ```$ yarn dev```
+    ```
+    $ yarn dev
+    ```

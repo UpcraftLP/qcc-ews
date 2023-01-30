@@ -20,7 +20,7 @@ $ docker pull ghcr.io/upcraftlp/quilt-ews:main
 1. Install [Yarn](https://classic.yarnpkg.com/en/docs/install "Yarn package manager")
 2. Clone the repository
     ```sh
-    $ git clone https://github.com/upcraftlp/quilt-ews.git
+    $ git clone https://github.com/upcraftlp/qcc-ews.git
     $ cd quilt-ews
     ```
 3. Install dependencies

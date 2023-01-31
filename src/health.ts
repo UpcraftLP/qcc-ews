@@ -1,5 +1,5 @@
 async function main() {
-	const result = await fetch(`http://127.0.0.1:${process.env.HEALTHCHECK_PORT || 8000}/health`);
+	const result = await fetch('http://127.0.0.1:8000/health');
 	if(result.status !== 200) {
 		throw new Error(`Health check failed with status code ${result.status}`);
 	}

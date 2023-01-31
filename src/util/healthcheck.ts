@@ -16,8 +16,8 @@ function start(): Promise<http.Server<typeof http.IncomingMessage, typeof http.S
 	const server = http.createServer(requestHandler);
 
 	return new Promise((resolve) => {
-		server.listen(config.healthCheck.port, config.healthCheck.interface, () => {
-			logger.info(`Health check server listening on http://${config.healthCheck.interface}:${config.healthCheck.port}`);
+		server.listen(8000, config.healthCheck.interface, () => {
+			logger.info(`Health check server listening on http://${config.healthCheck.interface}:8000`);
 			resolve(server);
 		});
 	});

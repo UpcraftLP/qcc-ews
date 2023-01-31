@@ -27,7 +27,6 @@ interface Logging {
 
 interface HealthCheck {
 	enabled: boolean;
-	port: number;
 	interface: string;
 }
 
@@ -75,7 +74,6 @@ const logging: Logging = {
 
 const healthCheck: HealthCheck = {
 	enabled: getBool('HEALTHCHECK_ENABLED', true),
-	port: getNumber('HEALTHCHECK_PORT', 8000),
 	interface: get('HEALTHCHECK_LISTEN_ON', '0.0.0.0'),
 };
 

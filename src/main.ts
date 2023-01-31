@@ -59,6 +59,9 @@ const main = async () => {
 			await healthcheck.start();
 		}
 		logger.info(`[READY] connected to discord as ${client.user?.tag}`);
+
+		// make bot appear offline to hide from user lists
+		client.user?.setStatus('invisible');
 	});
 	client.addListener(Events.GuildMemberAdd, async (member: GuildMember) => {
 		logger.debug(`[JOIN] ${member.id}`);

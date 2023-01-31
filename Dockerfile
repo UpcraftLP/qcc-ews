@@ -25,5 +25,7 @@ COPY . .
 HEALTHCHECK --interval=30s --retries=3 --start-period=10s --timeout=10s \
     CMD yarn healthcheck
 
+EXPOSE 8000
+
 # Start the app
 CMD yarn start

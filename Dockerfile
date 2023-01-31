@@ -1,8 +1,5 @@
 FROM node:18-alpine
 
-HEALTHCHECK --interval=30s --retries=3 --start-period=10s --timeout=10s \
-    CMD yarn healthcheck
-
 ENV NODE_ENV=production
 
 ARG VERSION
@@ -20,10 +17,13 @@ COPY yarn.lock ./
 COPY tsconfig.json ./
 
 # Install app dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile --production=true
 
 # Copy everything else
 COPY . .
+
+HEALTHCHECK --interval=30s --retries=3 --start-period=10s --timeout=10s \
+    CMD yarn healthcheck
 
 # Start the app
 CMD yarn start

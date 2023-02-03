@@ -1,17 +1,17 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"target": "ESNext",
-		"moduleResolution": "node",
-		"removeComments": true,
-		"sourceMap": true,
-		"resolveJsonModule": true,
-		"importHelpers": true,
-		"baseUrl": "src",
-		"rootDir": "src",
-		"outDir": "dist",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-	}
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+  }
 }

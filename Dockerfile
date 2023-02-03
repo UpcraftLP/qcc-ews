@@ -23,7 +23,7 @@ RUN yarn install --frozen-lockfile --production=true
 COPY . .
 
 HEALTHCHECK --interval=30s --retries=3 --start-period=10s --timeout=10s \
-    CMD yarn healthcheck
+	CMD yarn healthcheck
 
 EXPOSE 8000
 

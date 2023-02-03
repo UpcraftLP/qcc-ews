@@ -3,8 +3,8 @@ import path from 'path';
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 interface Config {
-    token: string;
-    clientId: string;
+	token: string;
+	clientId: string;
 	meta: Meta;
 	logging: Logging;
 	healthCheck: HealthCheck;
@@ -50,7 +50,7 @@ export const getNumber = (key: string, defaultValue?: number) => {
 export const getBool = (key: string, defaultValue?: boolean) => {
 	const value = get(key, defaultValue?.toString() ?? 'false');
 
-	const validValues = new Set<string>(['true', '1', 'yes','y']);
+	const validValues = new Set<string>(['true', '1', 'yes', 'y']);
 	return validValues.has(value.toLowerCase());
 };
 

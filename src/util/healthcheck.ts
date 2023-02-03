@@ -4,7 +4,7 @@ import logger from './logger';
 
 function start(): Promise<http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>> {
 	const requestHandler = (req: IncomingMessage, res: ServerResponse) => {
-		if(req.url === '/health') {
+		if (req.url === '/health') {
 			res.statusCode = 200;
 		}
 		else {

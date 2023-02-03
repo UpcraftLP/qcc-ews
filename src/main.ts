@@ -9,7 +9,7 @@ process.on('uncaughtException', (err) => {
 	logger.fatal(err);
 	process.exit(1);
 });
-  
+
 process.on('unhandledRejection', (err) => {
 	logger.fatal(err);
 	process.exit(1);
@@ -43,9 +43,9 @@ const main = async () => {
 		}
 		catch (error) {
 			logger.fatal(error, `[STARTUP] unable to look up user id ${knownBadUserId}!`);
-			if(config.logging.alerts !== '') {
+			if (config.logging.alerts !== '') {
 				const wh = new WebhookClient({ url: config.logging.alerts });
-				if(config.logging.alertsUsers.length > 0) {
+				if (config.logging.alertsUsers.length > 0) {
 					await wh.send(`[ERROR] Hey ${config.logging.alertsUsers.map(user => userMention(user)).join(', ')}, I couldn't find user with id ${knownBadUserId}, bot is shutting down!`);
 				}
 				else {
@@ -54,8 +54,8 @@ const main = async () => {
 			}
 			throw error;
 		}
-		
-		if(config.healthCheck.enabled) {
+
+		if (config.healthCheck.enabled) {
 			await healthcheck.start();
 		}
 		logger.info(`[READY] connected to discord as ${client.user?.tag}`);
@@ -67,7 +67,7 @@ const main = async () => {
 		logger.debug(`[JOIN] ${member.id}`);
 		if (filterTimestamp !== undefined && timestamps.isTimestampAround(member.user.createdTimestamp, filterTimestamp)) {
 			logger.info(`suspicious member: ${member.user.username}#${member.user.discriminator} (${member.user.id}), created at: ${member.user.createdTimestamp}`);
-			if(config.logging.logEvents) {
+			if (config.logging.logEvents) {
 				eventLogger.info({
 					id: member.user.id,
 					guild: member.guild.id,

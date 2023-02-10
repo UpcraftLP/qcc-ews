@@ -1,4 +1,4 @@
-import { channelMention, EmbedBuilder, Events, GatewayIntentBits, GuildMember, time, userMention, WebhookClient } from 'discord.js';
+import { channelMention, EmbedBuilder, Events, GatewayIntentBits, GuildMember, roleMention, time, userMention, WebhookClient, WebhookCreateMessageOptions } from 'discord.js';
 import { Client } from 'discord.js';
 import timestamps from './util/timestamps';
 import config from './util/config';
@@ -22,6 +22,14 @@ logger.info('Starting bot...');
 
 // one of the known bad user accounts, to compare the creation date to.
 const knownBadUserId = '963511021652303882';
+
+// mention to add to all messages
+// TODO make configurable per webhook URL
+const mentionId = '1068542967276638258';
+
+const minPingDuration = 10 * 60 * 1000; // 10 minutes
+let lastPingSent = 0;
+
 
 const client = new Client({
 	intents: [
@@ -114,13 +122,21 @@ const main = async () => {
 				.setTimestamp(member.joinedAt)
 				.setFooter({ text: 'powered by Up' });
 
+			const payload: WebhookCreateMessageOptions = {
+				username: member.guild.name,
+				avatarURL: member.guild.iconURL() ?? undefined,
+				embeds: [embed]
+			};
+
+			const now = Date.now();
+			if (now - lastPingSent > minPingDuration) {
+				payload.content = roleMention(mentionId);
+				lastPingSent = now;
+			}
+
 			webhooks.forEach(webhook => {
 				try {
-					webhook.send({
-						username: member.guild.name,
-						avatarURL: member.guild.iconURL() ?? undefined,
-						embeds: [embed]
-					});
+					webhook.send(payload);
 				}
 				catch (error) {
 					logger.error(error, 'Error sending webhook message to ' + webhook.url);

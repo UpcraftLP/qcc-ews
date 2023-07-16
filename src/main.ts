@@ -43,10 +43,10 @@ let filterTimestamp: number | undefined = undefined;
 
 const main = async () => {
 	client.once(Events.ClientReady, async () => {
-		logger.debug(`[STARTUP] fetching user ${knownBadUserId}...`);
+		logger.info(`[STARTUP] fetching user ${knownBadUserId}...`);
 		try {
 			const badUser = await client.users.fetch(knownBadUserId);
-			logger.debug(`[STARTUP] caching filter timestamp: ${badUser.createdTimestamp} (${badUser.createdAt.toUTCString()})`);
+			logger.info(`[STARTUP] caching filter timestamp for '${badUser.username}': ${badUser.createdTimestamp} (${badUser.createdAt.toUTCString()})`);
 			filterTimestamp = badUser.createdTimestamp;
 		}
 		catch (error) {
@@ -70,6 +70,8 @@ const main = async () => {
 
 		// make bot appear offline to hide from user lists
 		client.user?.setStatus('invisible');
+
+		logger.info('Guilds: ' + (await client.guilds.fetch()).map(guild => `\t${guild.id}: ${guild.name}`).join('\n'));
 	});
 	client.addListener(Events.GuildMemberAdd, async (member: GuildMember) => {
 		logger.debug(`[JOIN] ${member.id}`);

@@ -1,4 +1,4 @@
-import { channelMention, EmbedBuilder, Events, GatewayIntentBits, GuildMember, roleMention, time, userMention, WebhookClient, WebhookCreateMessageOptions } from 'discord.js';
+import { channelMention, EmbedBuilder, Events, GatewayIntentBits, GuildMember, roleMention, time, userMention, WebhookClient, WebhookMessageCreateOptions } from 'discord.js';
 import { Client } from 'discord.js';
 import timestamps from './util/timestamps';
 import config from './util/config';
@@ -122,7 +122,7 @@ const main = async () => {
 				.setTimestamp(member.joinedAt)
 				.setFooter({ text: 'powered by Up' });
 
-			const payload: WebhookCreateMessageOptions = {
+			const payload: WebhookMessageCreateOptions = {
 				username: member.guild.name,
 				avatarURL: member.guild.iconURL() ?? undefined,
 				embeds: [embed]

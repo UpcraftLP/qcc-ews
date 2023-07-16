@@ -71,7 +71,8 @@ const main = async () => {
 		// make bot appear offline to hide from user lists
 		client.user?.setStatus('invisible');
 
-		logger.info('Guilds: ' + (await client.guilds.fetch()).map(guild => `\t${guild.id}: ${guild.name}`).join('\n'));
+		const guilds = await client.guilds.fetch();
+		logger.info(`Guilds: (${guilds.size} total)\n` + guilds.map(guild => `\t${guild.id}: ${guild.name}`).join('\n'));
 	});
 	client.addListener(Events.GuildMemberAdd, async (member: GuildMember) => {
 		logger.debug(`[JOIN] ${member.id}`);
